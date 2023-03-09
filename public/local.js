@@ -16,9 +16,12 @@ $(document).ready(function(){
   let fetchdata = function(){
     fetch('/data').then(response => response.json()).then (jsonD => {
 
-        $(".stat1").text(jsonD["message1"])
-        $(".stat2").text(jsonD["message2"])
-        $(".stat3").text(jsonD["message3"])
+        $(".stat1").text(jsonD["avgwindspeed"])
+        $(".stat2").text(jsonD["avgwinddirection"])
+        $(".stat3").text(jsonD["runtime"])
+        $(".sensor1").text(jsonD["sensor1"])
+        $(".sensor2").text(jsonD["sensor2"])
+        $(".sensor3").text(jsonD["sensor3"])
     
         
       });
