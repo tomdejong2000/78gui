@@ -18,7 +18,7 @@ $(document).ready(function(){
 
         $(".stat1").text(jsonD["avgwindspeed"])
         $(".stat2").text(jsonD["avgwinddirection"])
-        $(".stat3").text(jsonD["runtime"])
+        $(".stat3").text(jsonD["sensordata"])
         $(".sensor1").text(jsonD["sensor1"])
         $(".sensor2").text(jsonD["sensor2"])
         $(".sensor3").text(jsonD["sensor3"])

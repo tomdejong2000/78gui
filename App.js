@@ -1,17 +1,27 @@
 const express = require('express');
 const path = require('path');
+var Gpio = require('onoff').Gpio; 
 
+var sensor = new Gpio(17, 'in', 'both'); 
 
 const app = express();
 const port = process.env.PORT || 8080;
+let c = 0;
 
 // Static Files
 app.use(express.static('public'));
+
+function unexportOnClose() { 
+  sensor.unexport(); 
+};
+
+process.on('SIGINT', unexportOnClose); //function to run when user closes using ctrl+c
 
 // sendFile will go here
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
+
 
 
 app.get('/windspeed', function(req, res) {
@@ -32,6 +42,15 @@ setInterval(function () {
 //maak json object aan op /data
 app.get('/data',(req,res) => {
 
+  sensor.watch(function (err, value) { 
+		if (err) { //if an error
+		  console.error('There was an error', err); 
+		return;
+		}
+		console.log(value);
+		c = value;
+	  });
+
     let x1 = Math.floor((Math.random() * 30) + 1);
     let x2 = Math.floor((Math.random() * 360) + 1);
     let x3 = Math.floor((Math.random() * 100) + 1);
@@ -46,7 +65,8 @@ app.get('/data',(req,res) => {
       runtime:seconds,
       sensor1:x3,
       sensor2:x4,
-      sensor3:x5
+      sensor3:x5,
+      sensordata: c
   }
 
   res.type('json').send(responseData)
