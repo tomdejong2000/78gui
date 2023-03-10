@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 var fs = require("fs");
-app.use(express.json());
+
 
 //comment dit uit voor geen package bullshit
 //ar Gpio = require('onoff').Gpio; 
@@ -15,6 +15,7 @@ let c = 0;
 
 // Static Files
 app.use(express.static('public'));
+app.use(express.json());
 
 let sensorData = {
   avgwindspeed: 0,
