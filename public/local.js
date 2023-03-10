@@ -16,16 +16,16 @@ $(document).ready(function(){
   let fetchdata = function(){
     fetch('/sensordata').then(response => response.json()).then (jsonD => {
 
-        $(".stat1").text(jsonD["sensordata"]["avgwindspeed"])
-        $(".stat2").text(jsonD["sensordata"]["avgwinddirection"])
-        $(".stat3").text(jsonD["sensordata"]["sensordata"])
-        $(".sensor1").text(jsonD["sensordata"]["sensor1"])
-        $(".sensor2").text(jsonD["sensordata"]["sensor2"])
-        $(".sensor3").text(jsonD["sensordata"]["sensor3"])
+        $(".stat1").text(jsonD["avgwindspeed"])
+        $(".stat2").text(jsonD["avgwinddirection"])
+        $(".stat3").text(jsonD["sensordata"])
+        $(".sensor1").text(jsonD["sensor1"])
+        $(".sensor2").text(jsonD["sensor2"])
+        $(".sensor3").text(jsonD["sensor3"])
     
         
       });
   }
 
-  setInterval(function() {fetchdata();},1000)
+  setInterval(function() {fetchdata();},100)
 });
