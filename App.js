@@ -69,26 +69,23 @@ app.get('/sensordata',(req,res) => {
 	//   });
 
 
-  res.type('json').send(sensordata)
+  res.type('json').send(sensorData)
 
 })
 
 
 app.post('/sensordata/s1', function(req, res) {
-  sensorData["sensor1"] = req.body;
-  console.log('Sensor data updated:', sensorData);
+  sensorData["sensor1"] = req.body["value"];
   res.status(200).send('Sensor data updated');
 });
 
 app.post('/sensordata/s2', function(req, res) {
-  sensorData["sensor2"] = req.body;
-  console.log('Sensor data updated:', sensorData);
+  sensorData["sensor2"] = req.body["value"];
   res.status(200).send('Sensor data updated');
 });
 
 app.post('/sensordata/s3', function(req, res) {
-  sensorData["sensor3"] = req.body;
-  console.log('Sensor data updated:', sensorData);
+  sensorData["sensor3"] = req.body["value"];
   res.status(200).send('Sensor data updated');
 });
 
