@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 var fs = require("fs");
+app.use(express.json());
 
 //comment dit uit voor geen package bullshit
 //ar Gpio = require('onoff').Gpio; 
@@ -14,6 +15,16 @@ let c = 0;
 
 // Static Files
 app.use(express.static('public'));
+
+let sensorData = {
+  avgwindspeed: 0,
+  avgwinddirection: 0,
+  runtime: 0,
+  sensor1: 0,
+  sensor2: 0,
+  sensor3: 0,
+  sensordata: 0
+};
 
 
 function unexportOnClose() { 
@@ -56,29 +67,29 @@ app.get('/sensordata',(req,res) => {
 	// 	c = value;
 	//   });
 
-    let x1 = Math.floor((Math.random() * 30) + 1);
-    let x2 = Math.floor((Math.random() * 360) + 1);
-    let x3 = Math.floor((Math.random() * 100) + 1);
-    let x4 = Math.floor((Math.random() * 100) + 1);
-    let x5 = Math.floor((Math.random() * 100) + 1);
-  let sensordata = {
-
-      "sensordata" : {
-        test:"0",
-        avgwindspeed:x1,
-        avgwinddirection:x2,
-        runtime:seconds,
-        sensor1:x3,
-        sensor2:x4,
-        sensor3:x5,
-        sensordata: c
-      }
-  }
 
   res.type('json').send(sensordata)
 
 })
 
+
+app.post('/sensordata/s1', function(req, res) {
+  sensorData["sensor1"] = req.body;
+  console.log('Sensor data updated:', sensorData);
+  res.status(200).send('Sensor data updated');
+});
+
+app.post('/sensordata/s2', function(req, res) {
+  sensorData["sensor2"] = req.body;
+  console.log('Sensor data updated:', sensorData);
+  res.status(200).send('Sensor data updated');
+});
+
+app.post('/sensordata/s3', function(req, res) {
+  sensorData["sensor3"] = req.body;
+  console.log('Sensor data updated:', sensorData);
+  res.status(200).send('Sensor data updated');
+});
 
 
 
