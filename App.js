@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+var fs = require("fs");
 
 //comment dit uit voor geen package bullshit
 //ar Gpio = require('onoff').Gpio; 
@@ -44,7 +45,7 @@ setInterval(function () {
 }, 1000);
 
 //maak json object aan op /data
-app.get('/data',(req,res) => {
+app.get('/sensordata',(req,res) => {
   //comment dit uit voor geen sensor package bullshit
   // sensor.watch(function (err, value) { 
 	// 	if (err) { //if an error
@@ -60,22 +61,25 @@ app.get('/data',(req,res) => {
     let x3 = Math.floor((Math.random() * 100) + 1);
     let x4 = Math.floor((Math.random() * 100) + 1);
     let x5 = Math.floor((Math.random() * 100) + 1);
-  let responseData = {
-      
+  let sensordata = {
 
-
-      avgwindspeed:x1,
-      avgwinddirection:x2,
-      runtime:seconds,
-      sensor1:x3,
-      sensor2:x4,
-      sensor3:x5,
-      sensordata: c
+      "sensordata" : {
+        test:"0",
+        avgwindspeed:x1,
+        avgwinddirection:x2,
+        runtime:seconds,
+        sensor1:x3,
+        sensor2:x4,
+        sensor3:x5,
+        sensordata: c
+      }
   }
 
-  res.type('json').send(responseData)
+  res.type('json').send(sensordata)
 
 })
+
+
 
 
 app.listen(port);
