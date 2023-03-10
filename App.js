@@ -89,7 +89,19 @@ app.post('/sensordata/s3', function(req, res) {
   res.status(200).send('Sensor data updated');
 });
 
+/* kan snel
+app.post('/sensordata/:sensorName', updateSensorData, function(req, res) {
+  res.status(200).send('Sensor data updated');
+});
 
+function updateSensorData(req, res, next) {
+  const { sensorName } = req.params;
+  const { value } = req.body;
+  sensorData[sensorName] = value;
+  next();
+}
+
+*/
 
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
