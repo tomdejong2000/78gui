@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
-var Gpio = require('onoff').Gpio; 
 
-var sensor = new Gpio(17, 'in', 'both'); 
+//comment dit uit voor geen package bullshit
+//ar Gpio = require('onoff').Gpio; 
+//var sensor = new Gpio(17, 'in', 'both'); 
+
+
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -10,6 +13,7 @@ let c = 0;
 
 // Static Files
 app.use(express.static('public'));
+
 
 function unexportOnClose() { 
   sensor.unexport(); 
@@ -28,8 +32,8 @@ app.get('/windspeed', function(req, res) {
   res.sendFile(path.join(__dirname, '/windspeed.html'));
 });
 
-app.get('/windsdirection', function(req, res) {
-  res.sendFile(path.join(__dirname, '/windspeed.html'));
+app.get('/winddirection', function(req, res) {
+  res.sendFile(path.join(__dirname, '/winddirection.html'));
 });
 
 let seconds = 0
@@ -41,15 +45,15 @@ setInterval(function () {
 
 //maak json object aan op /data
 app.get('/data',(req,res) => {
-
-  sensor.watch(function (err, value) { 
-		if (err) { //if an error
-		  console.error('There was an error', err); 
-		return;
-		}
-		console.log(value);
-		c = value;
-	  });
+  //comment dit uit voor geen sensor package bullshit
+  // sensor.watch(function (err, value) { 
+	// 	if (err) { //if an error
+	// 	  console.error('There was an error', err); 
+	// 	return;
+	// 	}
+	// 	console.log(value);
+	// 	c = value;
+	//   });
 
     let x1 = Math.floor((Math.random() * 30) + 1);
     let x2 = Math.floor((Math.random() * 360) + 1);
