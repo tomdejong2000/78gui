@@ -16,7 +16,7 @@ $(document).ready(function(){
   let fetchdata = function(){
     fetch('/sensordata').then(response => response.json()).then (jsonD => {
 
-        $(".stat1").text(jsonD["avgwindspeed"])
+        $(".stat1").text(jsonD["sensor1"] + jsonD["sensor2"] + jsonD["sensor3"] /3)
         $(".stat2").text(jsonD["avgwinddirection"])
         $(".stat3").text(jsonD["sensordata"])
         $(".sensor1").text(jsonD["sensor1"])
