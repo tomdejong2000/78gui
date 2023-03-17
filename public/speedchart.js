@@ -23,32 +23,36 @@ $(document).ready(function(){
           itemclick : toggleDataSeries
         },
         data: [{
-          type: "spline",
-          visible: true,
+          type: "line",
+          markerSize: 0,
           showInLegend: true,
           yValueFormatString: "##km/h",
           name: "sensor 1",
+          
           dataPoints: [
+            {x: 0, y:0}
             
     
           ]
         },
         {
-          type: "spline", 
+          type: "line", 
+          markerSize: 0,
           showInLegend: true,
           yValueFormatString: "##km/h",
           name: "sensor 2",
           dataPoints: [
-            
+            {x: 0, y: 0}
           ]
         },
         {
-          type: "spline", 
+          type: "line", 
+          markerSize: 0,
           showInLegend: true,
           yValueFormatString: "##km/h",
           name: "sensor 3",
           dataPoints: [
-            
+            {x: 0, y: 0}
           ]
         }]
       });
