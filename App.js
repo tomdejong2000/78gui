@@ -74,34 +74,12 @@ app.get('/sensordata',(req,res) => {
 })
 
 
-app.post('/sensordata/s1', function(req, res) {
-  sensorData["sensor1"] = req.body["value"];
-  res.status(200).send('Sensor data updated');
+app.post('/sensordata/:sensorId', function(req, res) {
+  const sensorId = req.params.sensorId;
+  sensorData[sensorId] = req.body["value"];
+  res.status(200).send(`Sensor ${sensorId} data updated`);
 });
 
-app.post('/sensordata/s2', function(req, res) {
-  sensorData["sensor2"] = req.body["value"];
-  res.status(200).send('Sensor data updated');
-});
-
-app.post('/sensordata/s3', function(req, res) {
-  sensorData["sensor3"] = req.body["value"];
-  res.status(200).send('Sensor data updated');
-});
-
-/* kan snel
-app.post('/sensordata/:sensorName', updateSensorData, function(req, res) {
-  res.status(200).send('Sensor data updated');
-});
-
-function updateSensorData(req, res, next) {
-  const { sensorName } = req.params;
-  const { value } = req.body;
-  sensorData[sensorName] = value;
-  next();
-}
-
-*/
 
 app.listen(port);
 console.log('Server started at http://localhost:' + port);
