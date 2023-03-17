@@ -1,4 +1,4 @@
-console.log("kaas");
+
 
 $(document).ready(function(){
   $(".hamburger-lines").click(function() {
@@ -27,9 +27,39 @@ $(document).ready(function(){
       });
   }
 
+  darktheme = false;
+
+
+
+
+   	
+
+  $( ".darktoggle" ).click(function() {
+    console.log("kaas");
+    console.log(darktheme);
+   darktheme = !darktheme;
+    if(darktheme){
+      $("body").addClass("dark");
+      $(".basicstats").addClass("dark");
+      $(".icon1").addClass("fa-sun");
+      $(".icon1").removeClass("fa-moon");
+      $(".icon1").addClass("sun");
+      $(".line").addClass("lightline");
+      
+    }else{
+      $("body").removeClass("dark");
+      $(".basicstats").removeClass("dark");
+      console.log("awfawf");
+      $(".icon1").addClass("fa-moon");
+      $(".icon1").removeClass("fa-sun");
+      $(".icon1").removeClass("sun");
+      $(".line").removeClass("lightline");
+    }
+
+  });
   
 
-  
+
 
 
 

@@ -4,6 +4,11 @@ html body {
   overflow-x: hidden;
 }
 
+.dark {
+  background-color: #121212;
+  color: #e3e3e3 !important;
+}
+
 .stopscroll {
   overflow: hidden;
   position: relative;
@@ -18,12 +23,28 @@ html body {
   justify-content: space-between;
   align-items: center;
 }
+.topwrapper .darktoggle {
+  font-size: 40px;
+  background: 0;
+  border: 0;
+  display: block;
+  margin-left: 1000px;
+  z-index: 33;
+  transition-duration: 0.2s;
+}
+.topwrapper .sun {
+  color: white;
+}
+.topwrapper .darktoggle:hover {
+  font-size: 50px;
+}
 .topwrapper .mainlogo {
   widht: 300px;
   height: 74px;
   padding-left: 40px;
 }
 .topwrapper .hamburger-lines {
+  transition-duration: 0.2s;
   display: block;
   height: 26px;
   width: 32px;
@@ -48,6 +69,9 @@ html body {
 .topwrapper .hamburger-lines .animated1 {
   transform: rotate(45deg) translate(0px, 16px);
 }
+.topwrapper .hamburger-lines .lightline {
+  background: white !important;
+}
 .topwrapper .hamburger-lines .animated2 {
   transition: transform 0.1s linear;
   transition-delay: 0.2s;
@@ -55,6 +79,9 @@ html body {
 }
 .topwrapper .hamburger-lines .animated3 {
   transform: rotate(-45deg) translate(0px, -16px);
+}
+.topwrapper .hamburger-lines:hover {
+  transform: scale(1.3);
 }
 
 .mainwrapper {
@@ -65,6 +92,9 @@ html body {
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: center;
+}
+.mainwrapper .dark {
+  background-color: #1c1c1c;
 }
 .mainwrapper .directiongraph {
   width: 500px;

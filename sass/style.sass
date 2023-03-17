@@ -6,10 +6,18 @@
 $mainfont: "Poppins", sans-serif
 $mainfont2: 'Arial'
 $maincolor: #e63c10
+$darkthemebackground: #121212
+$darkthemesemibackground: #1c1c1c
+$darkthemetext: #e3e3e3
+
 
 html body
     position: relative
     overflow-x: hidden
+    
+.dark
+    background-color: $darkthemebackground
+    color: $darkthemetext !important
 
 .stopscroll
     overflow: hidden
@@ -25,11 +33,27 @@ html body
     flex-wrap: nowrap
     justify-content: space-between
     align-items: center
+    
+    .darktoggle
+        font-size: 40px
+        background: 0
+        border: 0
+        display: block
+        margin-left: 1000px
+        z-index: 33
+        transition-duration: 0.2s
+    .sun
+        color: white
+
+    .darktoggle:hover
+        font-size: 50px
+        
     .mainlogo
         widht: 300px
         height: 74px
         padding-left: 40px
-    .hamburger-lines 
+    .hamburger-lines
+        transition-duration: 0.2s 
         display: block
         height: 26px
         width: 32px
@@ -50,14 +74,17 @@ html body
             transition: transform 0.1s linear
         .animated1
             transform: rotate(45deg) translate(0px, 16px)
-            
+        .lightline
+            background: white !important  
         .animated2
             transition: transform 0.1s linear
             transition-delay: 0.2s
             transform: scale(0)
         .animated3
             transform: rotate(-45deg) translate(0px, -16px)
-            
+    .hamburger-lines:hover
+        transform: scale(1.3)
+              
 
 	
 .mainwrapper
@@ -68,6 +95,9 @@ html body
     flex-wrap: nowrap
     justify-content: space-evenly
     align-items: center
+
+    .dark
+        background-color: $darkthemesemibackground
 
     .directiongraph
         width: 500px
