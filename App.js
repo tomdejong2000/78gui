@@ -12,6 +12,7 @@ var fs = require("fs");
 const app = express();
 const port = process.env.PORT || 8080;
 let c = 0;
+let key = "bradlyIsDom";
 
 // Static Files
 app.use(express.static('public'));
@@ -72,12 +73,18 @@ app.get('/sensordata',(req,res) => {
   res.type('json').send(sensorData)
 
 })
+const apiKeyCheck = (req, res, next) => {
+  const apiKey = req.headers['api-key'];
+  if (apiKey !== key) {
+    return res.status(401).json({ error: 'Invalid API key' });
+  }
+  next();
+};
 
-
-app.post('/sensordata/:sensorId', function(req, res) {
+app.post('/sensordata/:sensorId', apiKeyCheck, function(req, res) {
   const sensorId = req.params.sensorId;
   sensorData[sensorId] = req.body["value"];
-  res.status(200).send(`Sensor ${sensorId} data updated`);
+  res.status(200).send(`Sensor:  ${sensorId} data updated`);
 });
 
 
