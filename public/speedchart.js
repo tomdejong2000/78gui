@@ -9,11 +9,12 @@ $(document).ready(function(){
           text: "Windspeed of all 3 sensors"
         },
         axisY :{
-          title: "windspeed",
-          suffix: "km/h"
+          title: "windspeed(KM/H)",
+          
         },
         axisX :{
-          suffix: "sec"
+          title: "runtime (SEC)"
+          
         },
         toolTip: {
           shared: "true"
@@ -27,6 +28,7 @@ $(document).ready(function(){
           markerSize: 0,
           showInLegend: true,
           yValueFormatString: "##km/h",
+          xValueFormatString: "## sec",
           name: "sensor 1",
           
           dataPoints: [
