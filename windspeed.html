@@ -11,6 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link href="style.css" rel="stylesheet"></link>
     <script src="https://kit.fontawesome.com/26f71ba90b.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
 
 </head>
@@ -35,6 +37,7 @@
 
     <div class="topwrapper">
         <a href="/"><img class="mainlogo" src="logocop.png"></a>
+        <button class="darktoggle"><i class="icon1 fa-solid fa-moon"></i></button>
         <div class="hamburger-lines">
             <span class="line line1"></span>
             <span class="line line2"></span>
@@ -51,7 +54,7 @@
         <div id="chartContainer" style="height: 370px; width: 100%;"></div>
         <div class="cover"></div>
     </div>
-    
+    <button id="exportButton">export</button>
 
 
     

@@ -1,10 +1,15 @@
 console.log("chart")
 
+
 $(document).ready(function(){
 
     var chart = new CanvasJS.Chart("chartContainer", {
         theme:"light2",
         animationEnabled: true,
+        zoomEnabled: true,
+
+
+        
         title:{
           text: "Windspeed of all 3 sensors"
         },
@@ -13,7 +18,8 @@ $(document).ready(function(){
           
         },
         axisX :{
-          title: "runtime (SEC)"
+          title: "runtime (SEC)",
+          minimum: 1
           
         },
         toolTip: {
@@ -58,6 +64,15 @@ $(document).ready(function(){
           ]
         }]
       });
+
+
+
+      if(sessionStorage.getItem("toggleValue") == "ON"){
+        chart.set("backgroundColor", "#121212");
+        chart.set("theme","dark2");
+      }else{
+        
+      }
       chart.render();
       
       function toggleDataSeries(e) {
@@ -84,5 +99,15 @@ $(document).ready(function(){
 
 
 
+        $("#exportButton").click(function(){
+          var pdf = new jsPDF('l', 'mm', [1500, 500]);
+          var chartTheme = chart.get("theme");
+          chart.set("theme", "light2");
+          var canvas = $("#chartContainer .canvasjs-chart-canvas").get(0);
+          var dataURL = canvas.toDataURL();
+          chart.set("theme", chartTheme);
+          pdf.addImage(dataURL, 'JPEG', 0, 0);
+          pdf.save("chart.pdf");
+      });
 
 })
