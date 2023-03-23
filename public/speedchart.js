@@ -36,6 +36,7 @@ $(document).ready(function(){
           yValueFormatString: "##km/h",
           xValueFormatString: "## sec",
           name: "sensor 1",
+          lineThickness: 5,
           
           dataPoints: [
             {x: 0, y:0}
@@ -49,6 +50,7 @@ $(document).ready(function(){
           showInLegend: true,
           yValueFormatString: "##km/h",
           name: "sensor 2",
+          lineThickness: 5,
           dataPoints: [
             {x: 0, y: 0}
           ]
@@ -59,6 +61,7 @@ $(document).ready(function(){
           showInLegend: true,
           yValueFormatString: "##km/h",
           name: "sensor 3",
+          lineThickness: 5,
           dataPoints: [
             {x: 0, y: 0}
           ]
@@ -66,7 +69,7 @@ $(document).ready(function(){
       });
 
 
-
+      //check for session for darktheme
       if(sessionStorage.getItem("toggleValue") == "ON"){
         chart.set("backgroundColor", "#121212");
         chart.set("theme","dark2");
@@ -109,5 +112,21 @@ $(document).ready(function(){
           pdf.addImage(dataURL, 'JPEG', 0, 0);
           pdf.save("chart.pdf");
       });
+
+
+      //update graph realtime
+      $( ".darktoggle" ).click(function() {
+        if(sessionStorage.getItem("toggleValue")) {
+          chart.set("backgroundColor", "#121212");
+          chart.set("theme","dark2");
+        }else{
+          chart.set("backgroundColor", "#ffffff");
+          chart.set("theme","light2");
+        }
+
+
+
+
+      })
 
 })
