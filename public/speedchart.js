@@ -3,6 +3,7 @@ console.log("chart")
 
 $(document).ready(function(){
 
+    
     var chart = new CanvasJS.Chart("chartContainer", {
         theme:"light2",
         animationEnabled: true,
@@ -18,9 +19,8 @@ $(document).ready(function(){
           
         },
         axisX :{
-          title: "runtime (SEC)",
-          minimum: 1
-          
+          title: "time",
+          valueFormatString: "hh:mm:ss"
         },
         toolTip: {
           shared: "true"
@@ -34,12 +34,12 @@ $(document).ready(function(){
           markerSize: 0,
           showInLegend: true,
           yValueFormatString: "##km/h",
-          xValueFormatString: "## sec",
+          
           name: "sensor 1",
           lineThickness: 5,
           
           dataPoints: [
-            {x: 0, y:0}
+            
             
     
           ]
@@ -52,7 +52,7 @@ $(document).ready(function(){
           name: "sensor 2",
           lineThickness: 5,
           dataPoints: [
-            {x: 0, y: 0}
+            
           ]
         },
         {
@@ -63,7 +63,7 @@ $(document).ready(function(){
           name: "sensor 3",
           lineThickness: 5,
           dataPoints: [
-            {x: 0, y: 0}
+            
           ]
         }]
       });
@@ -87,23 +87,48 @@ $(document).ready(function(){
         chart.render();
       }
     
-      let updatechart = function(){
+      // let updatechart = function(){
     
-        var length = chart.options.data[0].dataPoints.length;
-        
-        chart.options.data[0].dataPoints.push({ y: parseInt($(".sensor1").text())});
-        chart.options.data[1].dataPoints.push({ y: parseInt($(".sensor2").text())});
-        chart.options.data[2].dataPoints.push({ y: parseInt($(".sensor3").text())});
-        chart.render();
-      
-        };
+      //   var length = chart.options.data[0].dataPoints.length;
+      //   var currentTime = new Date();
+      //   var hours = currentTime.getHours();
+      //   var minutes = currentTime.getMinutes();
+      //   var seconds = currentTime.getSeconds();
+      //   var timeString = hours + ":" + minutes + ":" + seconds;
 
-        setInterval(function() {updatechart();},1000)
+      //   chart.options.data[0].dataPoints.push({x:timeString, y: parseInt($(".sensor1").text())});
+      //   chart.options.data[1].dataPoints.push({x:timeString, y: parseInt($(".sensor2").text())});
+      //   chart.options.data[2].dataPoints.push({x:timeString, y: parseInt($(".sensor3").text())});
+      //   chart.render();
+
+        
+      
+      //   };
+
+      //   setInterval(function() {updatechart();},1000)
+
+      function pushDataPoint() {
+        var currentTime = new Date();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+        var timeString = hours + ":" + minutes + ":" + seconds;
+      
+        // Push a new data point to your CanvasJS chart with the current time as the x-value
+        chart.options.data[0].dataPoints.push({ x: currentTime, y: parseInt($(".sensor1").text()) });
+        chart.options.data[1].dataPoints.push({ x: currentTime, y: parseInt($(".sensor2").text()) });
+        chart.options.data[2].dataPoints.push({ x: currentTime, y: parseInt($(".sensor3").text()) });
+        // Call chart.render() to update the chart with the new data point
+        chart.render();
+      }
+      
+      // Call pushDataPoint every second to push a new data point to the chart
+      setInterval(pushDataPoint, 1000);
 
 
 
         $("#exportButton").click(function(){
-          var pdf = new jsPDF('l', 'mm', [1500, 500]);
+          var pdf = new jsPDF('l', 'mm', [1500, 400]);
           var chartTheme = chart.get("theme");
           chart.set("theme", "light2");
           var canvas = $("#chartContainer .canvasjs-chart-canvas").get(0);
