@@ -33,7 +33,7 @@ $(document).ready(function(){
           type: "line",
           markerSize: 0,
           showInLegend: true,
-          yValueFormatString: "##km/h",
+          yValueFormatString: "##.##km/h",
           
           name: "sensor 1",
           lineThickness: 5,
@@ -48,7 +48,7 @@ $(document).ready(function(){
           type: "line", 
           markerSize: 0,
           showInLegend: true,
-          yValueFormatString: "##km/h",
+          yValueFormatString: "##.##km/h",
           name: "sensor 2",
           lineThickness: 5,
           dataPoints: [
@@ -59,7 +59,7 @@ $(document).ready(function(){
           type: "line", 
           markerSize: 0,
           showInLegend: true,
-          yValueFormatString: "##km/h",
+          yValueFormatString: "##.##km/h",
           name: "sensor 3",
           lineThickness: 5,
           dataPoints: [
