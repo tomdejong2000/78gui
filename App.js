@@ -29,6 +29,8 @@ let sensorData = {
 };
 
 
+
+
 function unexportOnClose() { 
   sensor.unexport(); 
 };
