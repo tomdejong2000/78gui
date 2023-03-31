@@ -123,7 +123,7 @@ $(document).ready(function(){
       }
       
       // Call pushDataPoint every second to push a new data point to the chart
-      setInterval(pushDataPoint, 100);
+      setInterval(pushDataPoint, 500);
 
 
 
