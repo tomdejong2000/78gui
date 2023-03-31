@@ -115,9 +115,9 @@ $(document).ready(function(){
         var timeString = hours + ":" + minutes + ":" + seconds;
       
         // Push a new data point to your CanvasJS chart with the current time as the x-value
-        chart.options.data[0].dataPoints.push({ x: currentTime, y: parseInt($(".sensor1").text()) });
-        chart.options.data[1].dataPoints.push({ x: currentTime, y: parseInt($(".sensor2").text()) });
-        chart.options.data[2].dataPoints.push({ x: currentTime, y: parseInt($(".sensor3").text()) });
+        chart.options.data[0].dataPoints.push({ x: currentTime, y: parseFloat($(".sensor1").text()) });
+        chart.options.data[1].dataPoints.push({ x: currentTime, y: parseFloat($(".sensor2").text()) });
+        chart.options.data[2].dataPoints.push({ x: currentTime, y: parseFloat($(".sensor3").text()) });
         // Call chart.render() to update the chart with the new data point
         chart.render();
       }
