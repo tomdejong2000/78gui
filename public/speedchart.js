@@ -8,7 +8,7 @@ $(document).ready(function(){
         theme:"light2",
         animationEnabled: true,
         zoomEnabled: true,
-
+        exportEnabled: true,
 
         
         title:{
