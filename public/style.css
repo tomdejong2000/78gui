@@ -128,7 +128,7 @@ html body {
 
 .nav {
   font-family: "Poppins", sans-serif;
-  background-color: #37327b;
+  background-color: darkgrey;
   position: fixed;
   width: 35%;
   height: 100vh;
@@ -149,6 +149,7 @@ html body {
 .nav h3 {
   margin-top: 20%;
   text-align: center;
+  color: black;
 }
 .nav ul {
   text-align: right;
