@@ -102,25 +102,89 @@ $(document).ready(function(){
   }
 
 
+    
+  // Define your variables
+  var prevValue1 = picotime1
+  var timer1;
+
   // Function to check sensor timeouts
-function checkTimeout(picotime, prevValue, sensorBox) {
-  if (picotime == prevValue) {
-    $(sensorBox).addClass("disconnected");
-  } else {
-    prevValue = picotime;
-    $(sensorBox).removeClass("disconnected");
+  function checkTimeout1() {
+    if (picotime1 == prevValue1) {
+      $(".sensor1box").addClass("disconnected");
+    } else {
+      prevValue1 = picotime1;
+      $(".sensor1box").removeClass("disconnected");
+    }
+    
+    // Reset the timer
+    clearTimeout(timer1);
+    timer1 = setTimeout(checkTimeout1, 3000); // Use checkTimeout instead of checkVariable
   }
-  // Reset the timer
-  setTimeout(function() {
-    checkTimeout(picotime, prevValue, sensorBox);
-  }, 3000);
-}
 
-// Call the function for each sensor
-checkTimeout(picotime1, picotime1, ".sensor1box");
-checkTimeout(picotime2, picotime2, ".sensor2box");
-checkTimeout(picotime3, picotime3, ".sensor3box");
+  // Call the function to start checking the sensor timeouts
+  checkTimeout1();
 
+    // Define your variables
+    var prevValue2 = picotime2
+    var timer2;
+  
+    // Function to check sensor timeouts
+    function checkTimeout2() {
+      if (picotime2 == prevValue2) {
+        $(".sensor2box").addClass("disconnected");
+      } else {
+        prevValue2 = picotime2;
+        $(".sensor2box").removeClass("disconnected");
+      }
+      
+      // Reset the timer
+      clearTimeout(timer2);
+      timer2 = setTimeout(checkTimeout2, 3000); // Use checkTimeout instead of checkVariable
+    }
+  
+    // Call the function to start checking the sensor timeouts
+    checkTimeout2();
+
+      // Define your variables
+  var prevValue3 = picotime3
+  var timer3;
+
+  // Function to check sensor timeouts
+  function checkTimeout3() {
+    if (picotime3 == prevValue3) {
+      $(".sensor3box").addClass("disconnected");
+    } else {
+      prevValue3 = picotime1;
+      $(".sensor3box").removeClass("disconnected");
+    }
+    
+    // Reset the timer
+    clearTimeout(timer3);
+    timer3 = setTimeout(checkTimeout3, 3000); // Use checkTimeout instead of checkVariable
+  }
+
+  // Call the function to start checking the sensor timeouts
+  checkTimeout3();
+
+
+//   // Function to check sensor timeouts
+// function checkTimeout(picotime, prevValue, sensorBox) {
+//   if (picotime == prevValue) {
+//     $(sensorBox).addClass("disconnected");
+//   } else {
+//     prevValue = picotime;
+//     $(sensorBox).removeClass("disconnected");
+//   }
+//   // Reset the timer
+//   setTimeout(function() {
+//     checkTimeout(picotime, prevValue, sensorBox);
+//   }, 3000);
+// }
+
+// // Call the function for each sensor
+// checkTimeout(picotime1, picotime1, ".sensor1box");
+// checkTimeout(picotime2, picotime2, ".sensor2box");
+// checkTimeout(picotime3, picotime3, ".sensor3box");
   
 
 
