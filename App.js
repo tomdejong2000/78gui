@@ -3,9 +3,7 @@ const path = require('path');
 var fs = require("fs");
 
 
-//comment dit uit voor geen package bullshit
-//ar Gpio = require('onoff').Gpio; 
-//var sensor = new Gpio(17, 'in', 'both'); 
+
 
 
 
@@ -31,12 +29,6 @@ let sensorData = {
 
 
 
-
-function unexportOnClose() { 
-  sensor.unexport(); 
-};
-
-process.on('SIGINT', unexportOnClose); //function to run when user closes using ctrl+c
 
 // sendFile will go here
 app.get('/', function(req, res) {
