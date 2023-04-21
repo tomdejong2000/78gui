@@ -4,6 +4,8 @@ $(document).ready(function(){
 
   let measurementUnit = 3.6
   var picotime1
+  var picotime2
+  var picotime3
 
   $(".hamburger-lines").click(function() {
       $(".line1").toggleClass("animated1");
@@ -26,7 +28,11 @@ $(document).ready(function(){
 
         picotime1 = jsonD["sensor1Time"]
         $(".sensor1").text(jsonD["sensor1"])
+
+        picotime2 = jsonD["sensor2Time"]
         $(".sensor2").text(jsonD["sensor2"])
+
+        picotime3 = jsonD["sensor3Time"]
         $(".sensor3").text(jsonD["sensor3"])
     
         
@@ -96,27 +102,26 @@ $(document).ready(function(){
   }
 
 
-    
-  // Define your variables
-  var prevValue = picotime1
-  var timer;
-
   // Function to check sensor timeouts
-  function checkTimeout() {
-    if (picotime1 == prevValue) {
-      $(".sensor1box").addClass("disconnected");
-    } else {
-      prevValue = picotime1;
-      $(".sensor1box").removeClass("disconnected");
-    }
-    
-    // Reset the timer
-    clearTimeout(timer);
-    timer = setTimeout(checkTimeout, 3000); // Use checkTimeout instead of checkVariable
+function checkTimeout(picotime, prevValue, sensorBox) {
+  if (picotime == prevValue) {
+    $(sensorBox).addClass("disconnected");
+  } else {
+    prevValue = picotime;
+    $(sensorBox).removeClass("disconnected");
   }
+  // Reset the timer
+  setTimeout(function() {
+    checkTimeout(picotime, prevValue, sensorBox);
+  }, 3000);
+}
 
-  // Call the function to start checking the sensor timeouts
-  checkTimeout();
+// Call the function for each sensor
+checkTimeout(picotime1, picotime1, ".sensor1box");
+checkTimeout(picotime2, picotime2, ".sensor2box");
+checkTimeout(picotime3, picotime3, ".sensor3box");
+
+  
 
 
 
