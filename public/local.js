@@ -3,7 +3,7 @@
 $(document).ready(function(){
 
   let measurementUnit = 3.6
-
+  let picotime1
 
   $(".hamburger-lines").click(function() {
       $(".line1").toggleClass("animated1");
@@ -23,6 +23,7 @@ $(document).ready(function(){
         $(".stat1").text(parseInt(jsonD["sensor1"] + jsonD["sensor2"] + jsonD["sensor3"] /3))
         $(".stat2").text(jsonD["avgwinddirection"])
         $(".stat3").text(jsonD["sensordata"])
+        global.picotime1 = jsonD["sensor1Time"]
         $(".sensor1").text(jsonD["sensor1"])
         $(".sensor2").text(jsonD["sensor2"])
         $(".sensor3").text(jsonD["sensor3"])

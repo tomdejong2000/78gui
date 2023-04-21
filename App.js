@@ -23,6 +23,7 @@ let sensorData = {
   avgwinddirection: 0,
   runtime: 0,
   sensor1: 0,
+  sensor1Time: 0,
   sensor2: 0,
   sensor3: 0,
   sensordata: 0
@@ -86,6 +87,7 @@ const apiKeyCheck = (req, res, next) => {
 app.post('/sensordata/:sensorId', apiKeyCheck, function(req, res) {
   const sensorId = req.params.sensorId;
   sensorData[sensorId] = req.body["value"];
+  sensorData[sensorId + "Time"] = req.body["dataTime"];
   res.status(200).send(`Sensor:  ${sensorId} data updated`);
 });
 
