@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-
+  let measurementUnit = 3.6
 
 
   $(".hamburger-lines").click(function() {
@@ -14,7 +14,7 @@ $(document).ready(function(){
       $("body").toggleClass("stopscroll")
 
     });
-
+  
 
   //fetch de data uit json object uit /data en stop dat in h2
   let fetchdata = function(){
@@ -94,7 +94,30 @@ $(document).ready(function(){
   }
 
 
-  
+    
+  // Define your variables
+  var prevValue = $(".sensor1").text();
+  var timer;
+
+  // Function to check sensor timeouts
+  function checkTimeout() {
+    if ($(".sensor1").text() == prevValue) {
+      $(".sensor1box").addClass("disconnected");
+    } else {
+      prevValue = $(".sensor1").text();
+      $(".sensor1box").removeClass("disconnected");
+    }
+    
+    // Reset the timer
+    clearTimeout(timer);
+    timer = setTimeout(checkTimeout, 3000); // Use checkTimeout instead of checkVariable
+  }
+
+  // Call the function to start checking the sensor timeouts
+  checkTimeout();
+
+
+
 
 
 
