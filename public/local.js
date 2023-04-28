@@ -111,6 +111,7 @@ $(document).ready(function(){
   function checkTimeout1() {
     if (picotime1 == prevValue1) {
       $(".sensor1box").addClass("disconnected");
+      
     } else {
       prevValue1 = picotime1;
       $(".sensor1box").removeClass("disconnected");
