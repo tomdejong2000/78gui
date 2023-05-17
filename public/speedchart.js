@@ -3,6 +3,7 @@ console.log("chart")
 
 $(document).ready(function(){
 
+
     
     var chart = new CanvasJS.Chart("chartContainer", {
         theme:"light2",
@@ -67,7 +68,7 @@ $(document).ready(function(){
           ]
         }]
       });
-
+      
 
       //check for session for darktheme
       if(sessionStorage.getItem("toggleValue") == "ON"){
@@ -86,26 +87,8 @@ $(document).ready(function(){
         }
         chart.render();
       }
-    
-      // let updatechart = function(){
-    
-      //   var length = chart.options.data[0].dataPoints.length;
-      //   var currentTime = new Date();
-      //   var hours = currentTime.getHours();
-      //   var minutes = currentTime.getMinutes();
-      //   var seconds = currentTime.getSeconds();
-      //   var timeString = hours + ":" + minutes + ":" + seconds;
-
-      //   chart.options.data[0].dataPoints.push({x:timeString, y: parseInt($(".sensor1").text())});
-      //   chart.options.data[1].dataPoints.push({x:timeString, y: parseInt($(".sensor2").text())});
-      //   chart.options.data[2].dataPoints.push({x:timeString, y: parseInt($(".sensor3").text())});
-      //   chart.render();
-
-        
       
-      //   };
 
-      //   setInterval(function() {updatechart();},1000)
 
       function pushDataPoint() {
         var currentTime = new Date();
@@ -120,6 +103,7 @@ $(document).ready(function(){
         chart.options.data[2].dataPoints.push({ x: currentTime, y: parseFloat($(".sensor3").text()) });
         // Call chart.render() to update the chart with the new data point
         chart.render();
+        
       }
       
       // Call pushDataPoint every second to push a new data point to the chart
@@ -154,4 +138,11 @@ $(document).ready(function(){
 
       })
 
+      function exportChart() {
+        CanvasJSDataAsCSV(chart, "filename"); // or chart.exportAsCSV("filename");
+      }
+      
+      // Call the function when you want to export the chart data as csv
+      exportChart();
+      
 })
