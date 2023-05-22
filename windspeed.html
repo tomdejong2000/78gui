@@ -36,7 +36,7 @@
     </div>
 
     <div class="topwrapper">
-        <a href="/"><img class="mainlogo" src="newlogo.jpg"></a>
+        <a href="/"><img class="mainlogo" src="newlogo.png"></a>
         <button class="darktoggle"><i class="icon1 fa-solid fa-moon"></i></button>
         <div class="hamburger-lines">
             <span class="line line1"></span>
@@ -54,14 +54,16 @@
         <div id="chartContainer" style="height: 370px; width: 100%;"></div>
         <div class="cover"></div>
 
-        <button id="exportButton">export</button>
+        <button id="exportButton">pdf export</button>
+        <button id="csvbutton">excel export</button>
     </div>
     
 
 
     
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
-    <script src="https://cdn.jsdelivr.net/npm/export-canvasjs-chart-data-as-csv/dist/canvasjsascsv.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+
 
     <script src="local.js"></script> 
     <script src="speedchart.js"></script>

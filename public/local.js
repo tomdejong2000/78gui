@@ -108,7 +108,9 @@ $(document).ready(function(){
   var timer1;
 
   // Function to check sensor timeouts
-  function checkTimeout1() {
+  function checkTimeout() {
+    console.log("picotime" + picotime1)
+    console.log("prevtime" + prevValue1)
     if (picotime1 == prevValue1) {
       $(".sensor1box").addClass("disconnected");
       
@@ -119,11 +121,12 @@ $(document).ready(function(){
     
     // Reset the timer
     clearTimeout(timer1);
-    timer1 = setTimeout(checkTimeout1, 3000); // Use checkTimeout instead of checkVariable
+    timer1 = setTimeout(checkTimeout, 5000); // Use checkTimeout instead of checkVariable
   }
+  checkTimeout()
 
   // Call the function to start checking the sensor timeouts
-  checkTimeout1();
+ 
 
     // Define your variables
     var prevValue2 = picotime2

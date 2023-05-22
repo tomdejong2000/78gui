@@ -9,7 +9,7 @@ $(document).ready(function(){
         theme:"light2",
         animationEnabled: true,
         zoomEnabled: true,
-        exportEnabled: true,
+        
 
         
         title:{
@@ -138,11 +138,80 @@ $(document).ready(function(){
 
       })
 
-      function exportChart() {
-        CanvasJSDataAsCSV(chart, "filename"); // or chart.exportAsCSV("filename");
+ 
+      
+
+            // Initialize an empty map
+      var myMap = new Map();
+
+      // Function to generate a random key
+      function generateRandomKey() {
+        return Math.random().toString(36).substring(7);
       }
-      
-      // Call the function when you want to export the chart data as csv
-      exportChart();
-      
+
+      // Function to generate a random value
+      function generateRandomValue() {
+        return Math.floor(Math.random() * 100);
+      }
+
+      // Function to add a random key-value pair to the map
+      function addRandomKeyValuePair() {
+        var randomKey = generateRandomKey();
+        var randomValue = generateRandomValue();
+        myMap.set(randomKey, randomValue);
+      }
+      function addToMap(){
+        var today = new Date();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + ":" + today.getMilliseconds()
+        myMap.set(time, $(".sensor1").text());
+      }
+
+
+// Function to export the map as an XLSX file
+function exportMapToXLSX() {
+  // Create a new workbook
+  var workbook = XLSX.utils.book_new();
+
+  // Create a new worksheet
+  var worksheet = XLSX.utils.json_to_sheet([...myMap.entries()]);
+
+  // Add the worksheet to the workbook
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Data");
+
+  // Generate the XLSX file
+  var xlsxFile = XLSX.write(workbook, { type: "binary" });
+
+  // Convert the binary data to a Blob object
+  var blob = new Blob([s2ab(xlsxFile)], { type: "application/octet-stream" });
+
+  // Create a temporary download link
+  var link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "Data.xlsx";
+
+  // Trigger the download
+  link.click();
+}
+
+// Helper function to convert string to ArrayBuffer
+function s2ab(s) {
+  var buf = new ArrayBuffer(s.length);
+  var view = new Uint8Array(buf);
+  for (var i = 0; i < s.length; i++) {
+    view[i] = s.charCodeAt(i) & 0xff;
+  }
+  return buf;
+}
+
+      // Add a random key-value pair every 3 seconds
+      setInterval(function () {
+        addToMap();
+        
+      }, 100);
+
+      // Button click event handler
+      $("#csvbutton").on("click", function () {
+        exportMapToXLSX();
+      });
+
 })
