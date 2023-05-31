@@ -128,7 +128,33 @@ html body {
 
 .speedgraphwrapper {
   width: 100%;
-  height: 400px;
+  height: 500px;
+}
+.speedgraphwrapper button {
+  border: none;
+  text-decoration: none;
+  width: 200px;
+  height: 40px;
+  color: white;
+  transition-duration: 0.3s;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.speedgraphwrapper .excelexport {
+  background-color: #008739;
+  outline: solid #008739;
+}
+.speedgraphwrapper .excelexport:hover {
+  background-color: white;
+  color: #008739;
+}
+.speedgraphwrapper .pdfexport {
+  outline: solid #b30b00;
+  background-color: #b30b00;
+}
+.speedgraphwrapper .pdfexport:hover {
+  background-color: white;
+  color: #b30b00;
 }
 
 .nav {
