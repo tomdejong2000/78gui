@@ -106,7 +106,7 @@ $(document).ready(function(){
         
       }
       
-      // Call pushDataPoint every second to push a new data point to the chart
+      // Call pushDataPoint every half second to push a new data point to the chart
       setInterval(pushDataPoint, 500);
 
 
